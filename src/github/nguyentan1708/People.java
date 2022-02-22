@@ -1,5 +1,6 @@
 package github.nguyentan1708;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import github.nguyentan1708.CheckValid;
 
@@ -7,17 +8,19 @@ public class People {
 	private String hoTen;
 	private String gioiTinh;
 	private String soDienThoai;
+	private String email;
 	private String diaChi;
 
 	public People() {
 		super();
 	}
 
-	public People(String hoTen, String gioiTinh, String soDienThoai, String diaChi) {
+	public People(String hoTen, String gioiTinh, String soDienThoai, String email, String diaChi) {
 		super();
 		this.hoTen = hoTen;
 		this.gioiTinh = gioiTinh;
 		this.soDienThoai = soDienThoai;
+		this.email = email;
 		this.diaChi = diaChi;
 	}
 
@@ -34,7 +37,7 @@ public class People {
 	}
 
 	public void setGioiTinh(String gioiTinh) {
-		this.gioiTinh=gioiTinh;
+		this.gioiTinh = gioiTinh;
 	}
 
 	public String getSoDienThoai() {
@@ -42,8 +45,15 @@ public class People {
 	}
 
 	public void setSoDienThoai(String soDienThoai) {
+		this.soDienThoai = soDienThoai;
+	}
 
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getDiaChi() {
@@ -56,22 +66,21 @@ public class People {
 
 	public void nhapThongTin() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("---Vui lòng nhập thông tin---");
 		System.out.print("Họ và tên: ");
-		this.hoTen=scanner.nextLine();
-		while(true) {
+		this.hoTen = scanner.nextLine();
+		while (true) {
 			System.out.print("Giới tính: ");
-			String gioiTinh=scanner.nextLine();
+			String gioiTinh = scanner.nextLine();
 			if (gioiTinh.equalsIgnoreCase("nam") || gioiTinh.equalsIgnoreCase("nữ")) {
-				this.gioiTinh=gioiTinh;
+				this.gioiTinh = gioiTinh;
 				break;
-			}else {
+			} else {
 				System.out.println("Vui lòng nhập đúng giới tính");
 			}
 		}
 		while (true) {
 			System.out.print("Số điện thoại: ");
-			String soDienThoai=scanner.nextLine();
+			String soDienThoai = scanner.nextLine();
 			if (CheckValid.isValidNumberPhone(soDienThoai)) {
 				this.soDienThoai = soDienThoai;
 				break;
@@ -79,12 +88,15 @@ public class People {
 				System.out.println("Vui lòng nhập đúng số điện thoại");
 			}
 		}
+		System.out.print("Email: ");
+		this.email = scanner.nextLine();
 		System.out.print("Địa chỉ: ");
-		this.diaChi=scanner.nextLine();
+		this.diaChi = scanner.nextLine();
 	}
+
 	@Override
 	public String toString() {
-		return hoTen+"-"+gioiTinh+"-"+soDienThoai+"-"+diaChi;
+		return hoTen + "-" + gioiTinh + "-" + soDienThoai + "-" + diaChi;
 	}
 
 }

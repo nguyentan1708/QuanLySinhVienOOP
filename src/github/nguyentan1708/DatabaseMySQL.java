@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-public class ConnectionMySQL {
+public class DatabaseMySQL {
 	private static String DB_URL="jdbc:mysql://localhost:3306/qlsv";
 	private static String USER_NAME="root";
 	private static String PASSWORD="17081998";
@@ -24,7 +24,9 @@ public class ConnectionMySQL {
 			Connection conn=getConnection(DB_URL, USER_NAME, PASSWORD);
 			Statement stmt=conn.createStatement();
 			stmt.executeUpdate(string);
+			System.out.println("Thêm dữ liệu vào MySQL thành công!");
 		} catch (Exception e) {
+			System.out.println("Thêm dữ liệu vào MySQL thất bại!");
 			e.printStackTrace();
 		}
 	}
